@@ -1,0 +1,14 @@
+{% block content %}
+    <h1>Minhas Tarefas</h1>
+    <a href="{% url 'task_create' %}">Criar Nova Tarefa</a>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> ({{ task.get_priority_display }}) - {{ task.due_date }}
+                {% if task.completed %}✔️{% else %}❌{% endif %}
+                <a href="{% url 'task_update' task.pk %}">Editar</a>
+                <a href="{% url 'task_delete' task.pk %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

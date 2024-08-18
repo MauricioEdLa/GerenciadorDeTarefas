@@ -1,0 +1,8 @@
+{% block content %}
+    <h1>{% if object %}Editar Tarefa{% else %}Criar Nova Tarefa{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+{% endblock %}
